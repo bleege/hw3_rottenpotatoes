@@ -40,3 +40,27 @@ When /I (un)?check the following ratings: (.*)/ do |uncheck, rating_list|
 	end
 
 end
+
+Then /^I should see the following ratings: (.*)/ do |rating_list|
+	ratings = page.all("table#movies tbody tr td[2]").map! {|t| t.text}
+	rating_list.split(",").each do |field|
+		assert ratings.include?(field.strip)
+	end
+end
+
+Then /^I should not see the following ratings: (.*)/ do |rating_list|
+	ratings = page.all("table#movies tbody tr td[2]").map! {|t| t.text}
+	rating_list.split(",").each do |field|
+		assert !ratings.include?(field.strip)
+	end
+end
+
+Then /^I should see all of the movies$/ do
+	rows = page.all("table#movies tbody tr td[1]").map! {|t| t.text}
+	assert ( rows.size == Movie.all.count )
+end
+
+Then /^I should see no movies$/ do
+	rows = page.all("table#movies tbody tr td[1]").map! {|t| t.text}
+	assert rows.size == 0
+end
