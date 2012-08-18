@@ -24,14 +24,14 @@ Background: movies have been added to database
 Scenario: sort movies alphabetically
   When I follow "Movie Title"
   # your steps here
-  And I check the following ratings: G, PG, PG-13, R
-  And I press "ratings_submit"
+#  And I check the following ratings: G, PG, PG-13, R
+#  And I press "ratings_submit"
   Then I should see "Aladdin" before "Amelie"
 
 Scenario: sort movies in increasing order of release date
   When I follow "Release Date"
   # your steps here
-  And I check the following ratings: G, PG, PG-13, R
-  And I press "ratings_submit"
+#  And I check the following ratings: G, PG, PG-13, R
+#  And I press "ratings_submit"
   Then I should see "Amelie" before "The Help"
 
